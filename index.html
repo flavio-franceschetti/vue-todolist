@@ -11,12 +11,15 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
+
     <!-- Stile -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Vue 3.x -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
 
   <body>
-    <div class="container">
+    <div id="app" class="container">
       <!-- Intestazione -->
       <header class="panel">
         <h1>Todolist app</h1>
@@ -29,19 +32,34 @@
         <p class="empty-list-message"></p>
 
         <!-- Lista attività -->
-        <ul class="todo-list"></ul>
+        <ul class="todo-list">
+          <li v-for="(task, index) in tasks" :key="index" class="todo-item">
+            <div class="todo-check">
+              <img
+                @click="removeTask(index)"
+                src="images/circle-xmark-regular (1).svg"
+                alt=""
+              />
+            </div>
+            <p class="todo-text">{{task.text}}</p>
+          </li>
+        </ul>
 
         <!-- pannello aggiunta attività -->
         <div class="panel add-todo">
-          <input type="text" placeholder="Aggiungi attività" />
-          <button>
+          <input
+            @keyup.enter="addNewTask"
+            v-model="newTask"
+            type="text"
+            placeholder="Aggiungi attività"
+          />
+          <button @click="addNewTask">
             <img src="images/add.svg" alt="plus icon" />
           </button>
         </div>
       </main>
     </div>
-
     <!-- Javascript -->
-    <script src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
   </body>
 </html>
