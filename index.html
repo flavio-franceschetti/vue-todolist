@@ -28,11 +28,8 @@
 
       <!-- Sezione principale -->
       <main>
-        <!-- MEssaggio da mostrare se non ho attività -->
-        <p class="empty-list-message"></p>
-
         <!-- Lista attività -->
-        <ul class="todo-list">
+        <ul v-if="tasks.length > 0" class="todo-list">
           <li v-for="(task, index) in tasks" :key="index" class="todo-item">
             <div class="todo-check">
               <img
@@ -41,9 +38,19 @@
                 alt=""
               />
             </div>
-            <p class="todo-text">{{task.text}}</p>
+            <p
+              @click="task.done = !task.done"
+              :class="task.done === true ? 'task-done' : ''"
+              class="todo-text"
+            >
+              {{task.text}}
+            </p>
           </li>
         </ul>
+        <!-- MEssaggio da mostrare se non ho attività -->
+        <p v-else class="empty-list-message">
+          Non ci sono attività da svolgere
+        </p>
 
         <!-- pannello aggiunta attività -->
         <div class="panel add-todo">

@@ -11,7 +11,7 @@ createApp({
         },
         {
           text: "fare la spesa",
-          done: false,
+          done: true,
         },
         {
           text: "fare la doccia",
@@ -23,7 +23,7 @@ createApp({
   methods: {
     // metodo per aggiungere nuove tasks
     addNewTask() {
-      if (this.newTask !== "" && this.newTask.length > 3) {
+      if (this.newTask !== "" && this.newTask.length >= 3) {
         this.tasks.push({
           text: this.newTask,
           done: false,

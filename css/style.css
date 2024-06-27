@@ -87,6 +87,7 @@ button {
 
 .todo-text {
   padding: 16px;
+  cursor: pointer;
 }
 
 .todo-check {
@@ -98,4 +99,8 @@ button {
 
 .todo-check img {
   width: 24px;
+}
+
+.task-done {
+  text-decoration: line-through;
 }
